@@ -1,0 +1,8 @@
+python-dotenv
+flask
+flask_socketio
+python-dateutil
+openai
+requests
+google-generativeai
+opencc-python-reimplemented
