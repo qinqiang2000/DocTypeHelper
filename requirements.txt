@@ -6,3 +6,9 @@ openai
 requests
 google-generativeai
 opencc-python-reimplemented
+python-dotenv
+flask
+flask_socketio
+pandas
+frontend
+tools
