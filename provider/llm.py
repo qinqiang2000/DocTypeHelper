@@ -57,10 +57,12 @@ def identify_type(doc_path, text_id=""):
 
 def identify(doc_path, text_id=""):
     if channel == Channel.MOCK:
-        return """ 收货单
+        import time
+        time.sleep(1)
+        return """True
         实物送货单
         双方签字
-        }"""
+        """
 
     if channel == Channel.RPA:
         rpa = ChatGPTRPA()
