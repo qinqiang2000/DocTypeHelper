@@ -6,6 +6,9 @@ from provider.llm_azure import LLMAzureOpenAI
 from provider.llm_openai import LLMOpenAI
 from provider.llm_rpa_chatgpt import ChatGPTRPA
 from provider.prompt import base_prompt
+import logging
+
+logging.basicConfig(format='[%(asctime)s %(filename)s:%(lineno)d] %(levelname)s: %(message)s', level=logging.INFO, force=True)
 
 
 class Channel(Enum):

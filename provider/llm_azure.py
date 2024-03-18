@@ -1,7 +1,7 @@
 import base64
 import os
 from mimetypes import guess_type
-
+import logging
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 import json
@@ -37,7 +37,7 @@ client = AzureOpenAI(
 
 class LLMAzureOpenAI:
     def generate_text(self, image_path, sys_prompt, reqid):
-        print("使用模型API：azure ", os.environ['OPENAI_DEPLOYMENT_NAME'], reqid)
+        logging.info(f"使用模型：azure，{os.environ['OPENAI_DEPLOYMENT_NAME']}, {reqid} ")
         try:
             data_url = local_image_to_data_url(image_path)
             response = client.chat.completions.create(
@@ -57,10 +57,10 @@ class LLMAzureOpenAI:
                 max_tokens=2000
             )
         except Exception as e:
-            print(f"调用openai出错：{e}")
+            logging.info(f"调用openai出错：{e}")
             return json.dumps({"error": "fail: 调用大模型接口出错"})
 
-        print("total tokens:", response.usage.total_tokens)
-        print(response.choices[0].message.content)
+        logging.info(f"total tokens:{response.usage.total_tokens}")
+        logging.info(response.choices[0].message.content)
 
         return response.choices[0].message.content
